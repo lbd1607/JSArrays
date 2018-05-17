@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+Laura Davis CIS 370 
+JavaScript Program #2
+This program performs functions
+and commands on two arrays and 
+their combinations.
+The arrays are made up of
+characters from the TV series
+The Big Bang Theory
+-->
+
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>JavaScript #2 Laura Davis</title>
+    
+<meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <style>
+        
+        button{
+        background-color: magenta;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        }
+        
+        body{
+            background-color: aqua;
+        }
+    </style>
+    
+</head>
+    
+<body>
+    <h1>A string array example</h1> 
+    <h2>Written by Laura Davis</h2>
+    <p>The Big Bang Theory female cast are: <br>Penny, Amy, Bernadette</p>
+    <p>The Big Bang Theory male cast are: <br>Sheldon, Leonard, Howard</p>
+    <button onclick="bigBangArray()">Ready to do some array manipulation?</button>
+     
+    <script>
+        /*The original three male characters in thier own male array */
+        var bbMale = ["Sheldon", "Leonard", "Howard"];
+        /*The original three female characters in thier own female array */
+        var bbFemale = ["Penny", "Amy", "Bernadette"];
+        
+        /*The main array function */
+        function bigBangArray(){
+            /*Adds a male cast member to the beginning of the male array */
+            bbMale.unshift("Raj");
+            /*Adds a female cast member to the end of female array */
+            bbFemale.push("Emily");
+            /*Adds a female cast member to the middle of the female array */
+            bbFemale.splice(2, 0, "Leslie");
+            /*Adds a male cast member to the middle of the male array */
+            bbMale.splice(3, 0, "Stuart");
+            /*Concatinates the final male character onto the end of the male array
+            and saves the new version of the concatinated array in a new array
+            called bbMale2*/
+            var bbMale2 = bbMale.concat("Captain Sweatpants");
+            
+            /*Concatinates the male and female arrays into one new array called both */
+            var both = bbFemale.concat(bbMale2);
+            /*Sorts the new array so characters are arranged alphabetically a-z */
+            both.sort();
+            document.getElementById("sorting").innerHTML = "The sorted cast of the Big Bang Theory are: " + both; 
+            
+            /*Slices out part of the new sorted array and puts them in a new array */
+            var sliced = both.slice(1, 4);
+            document.getElementById("slicing").innerHTML = sliced;
+            
+            /*A for loop that loops through the both array and displays characters
+            five through eight (inclusive)*/
+            var both2=[];
+            for(var i=0; i<4; i++){
+              both2[i] = both[i+3];
+            }
+                       
+            document.getElementById("females").innerHTML = "The female cast of the Big Bang Theory are: " + bbFemale;
+            document.getElementById("males").innerHTML = "The male cast of the Big Bang Theory are: " + bbMale2;
+            document.getElementById("slicing").innerHTML = "The partial cast of the Big Bang Theory are: " + sliced;
+            document.getElementById("partFor").innerHTML = "The partial cast of the Big Bang Theory using a for loop (fifth array item to eighth item inclusive): <br>" + both2.join("<br>");
+            
+        }
+        
+    </script>
+     
+    <p id="females"></p>
+    <p id="males"></p>
+    <p id="sorting"></p>
+    <p id="slicing"></p>
+    <p id="partFor"></p>
+
+</body>
+</html>
